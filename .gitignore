@@ -1,0 +1,9 @@
+/Library/
+/Temp/
+/obj/
+/Build/
+/Builds/
+.DS_Store
+*.csproj
+*.sln
+.vscode/
