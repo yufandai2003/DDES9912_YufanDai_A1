@@ -1,12 +1,12 @@
 using UnityEngine;
 
-// 挂在 上滚筒（子物体）
+// Attach to the upper roller (child object)
 public class UpRollerSpring : MonoBehaviour
 {
-    [Header("关联把手")]
+    [Header("Linked Handle")]
     public HandleRotator handleRotator;
 
-    [Header("旋转速度")]
+    [Header("Rotation Speed")]
     public float rotateSpeed = 100f;
 
     void Update()
@@ -15,7 +15,7 @@ public class UpRollerSpring : MonoBehaviour
 
         int state = handleRotator.rotateState;
 
-        // 只旋转自己，绝对不跑位
+        // Only rotate itself, no position shifting
         transform.Rotate(0, -state * rotateSpeed * Time.deltaTime, 0);
     }
 }

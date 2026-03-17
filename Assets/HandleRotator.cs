@@ -1,32 +1,32 @@
 using UnityEngine;
-using UnityEngine.UI; // 必须加
+using UnityEngine.UI; // Required import
 
 public class HandleRotator : MonoBehaviour
 {
-    [Header("输出滚筒")]
+    [Header("Output Roller")]
     public Transform downRoller;
 
-    [Header("传动比 把手:滚筒 = 1:2")]
+    [Header("Gear Ratio Handle:Roller = 1:2")]
     public float gearRatio = 2f;
 
-    [Header("滚轮灵敏度")]
+    [Header("Mouse Wheel Sensitivity")]
     public float wheelSensitivity = 20f;
 
-    [Header("UI按钮控制转速")]
+    [Header("UI Button Rotation Speed")]
     public float autoRotateSpeed = 100f;
 
-    // 自动旋转状态：0停止 1正转 -1反转
-    public  int rotateState = 0;
+    // Auto rotation state: 0 = Stop, 1 = Forward, -1 = Reverse
+    public int rotateState = 0;
 
     void Update()
     {
-        // ====================== 滚轮控制（原有功能） ======================
+        // ====================== Mouse Wheel Control (Original Feature) ======================
         if (IsMouseOverObject())
         {
             float scroll = Input.GetAxis("Mouse ScrollWheel");
             if (scroll != 0)
             {
-                rotateState = 0; // 滚轮一动，自动停止
+                rotateState = 0; // Stop auto rotation when wheel is used
 
                 transform.Rotate(0, scroll * wheelSensitivity, 0);
                 if (downRoller != null)
@@ -34,7 +34,7 @@ public class HandleRotator : MonoBehaviour
             }
         }
 
-        // ====================== UI按钮 自动控制 ======================
+        // ====================== UI Button Auto Control ======================
         if (rotateState != 0)
         {
             float rotateAmount = rotateState * autoRotateSpeed * Time.deltaTime;
@@ -44,12 +44,12 @@ public class HandleRotator : MonoBehaviour
         }
     }
 
-    // ====================== UI按钮调用的方法 ======================
-    public void OnForwardBtn() => rotateState = 1;   // 正转
-    public void OnReverseBtn() => rotateState = -1;  // 反转
-    public void OnStopBtn() => rotateState = 0;      // 停止
+    // ====================== Methods Called by UI Buttons ======================
+    public void OnForwardBtn() => rotateState = 1;   // Forward rotation
+    public void OnReverseBtn() => rotateState = -1;  // Reverse rotation
+    public void OnStopBtn() => rotateState = 0;      // Stop rotation
 
-    // 检测鼠标是否在物体上
+    // Check if mouse is hovering over this object
     private bool IsMouseOverObject()
     {
         if (Camera.main == null) return false;

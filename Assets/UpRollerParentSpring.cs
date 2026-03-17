@@ -1,28 +1,28 @@
 ﻿using UnityEngine;
 
-// 挂在 上滚筒的父物体 UpRollerParent
+// Attach to the parent object of the upper roller: UpRollerParent
 public class UpRollerParentSpring : MonoBehaviour
 {
-    [Header("弹簧目标高度（最低点=初始位置）")]
+    [Header("Spring Target Height (Lowest Point = Initial Position)")]
     public float targetY = 0f;
 
-    [Header("弹簧强度")]
+    [Header("Spring Force")]
     public float springForce = 50f;
 
-    [Header("阻尼")]
+    [Header("Damping")]
     public float damping = 5f;
 
-    [Header("跳动上限：比最低点高 0.02")]
+    [Header("Max Bounce Height: 0.02 above lowest point")]
     public float maxOffsetY = 0.02f;
 
-    [Header("跳动频率（越小跳得越慢）")]
+    [Header("Bounce Frequency (Smaller = Slower)")]
     public float shakeInterval = 0.15f;
 
-    [Header("当前是否允许跳动")]
+    [Header("Is bouncing currently allowed")]
     private float shakeTimer;
 
     private Rigidbody rb;
-    private float baseY; // 初始基准位置
+    private float baseY; // Initial base position
 
     void Start()
     {
@@ -35,7 +35,7 @@ public class UpRollerParentSpring : MonoBehaviour
     void FixedUpdate()
     {
         float yDelta = targetY - transform.position.y;
-        rb.velocity = new Vector3(0, yDelta * springForce - rb.velocity.y * damping, 0);
+        rb.linearVelocity = new Vector3(0, yDelta * springForce - rb.linearVelocity.y * damping, 0);
     }
 
     void Update()
@@ -47,13 +47,13 @@ public class UpRollerParentSpring : MonoBehaviour
             return;
         }
 
-        // 控制跳动频率 ← 核心
+        // Control bounce frequency - Core logic
         shakeTimer += Time.deltaTime;
         if (shakeTimer >= shakeInterval)
         {
             shakeTimer = 0;
 
-            // 在 初始位置 ~ 初始位置+0.02 之间轻柔跳动
+            // Gently bounce between initial position and initial position + 0.02
             float randomY = Random.Range(baseY, baseY + maxOffsetY);
             transform.position = new Vector3(transform.position.x, randomY, transform.position.z);
         }

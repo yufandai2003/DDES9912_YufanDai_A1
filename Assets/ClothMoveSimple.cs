@@ -10,18 +10,18 @@ public class ClothMoveSimple : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.isKinematic = true; // 开启运动学刚体
+        rb.isKinematic = true; // Enable kinematic rigidbody
     }
 
-    void FixedUpdate() // 物理移动必须在 FixedUpdate
+    void FixedUpdate() // Physics movement must be in FixedUpdate
     {
         if (handleRotator == null) return;
         int state = handleRotator.rotateState;
 
-        // 计算目标位置
+        // Calculate target position
         Vector3 movement = new Vector3(0, 0, -state * moveSpeed * Time.fixedDeltaTime);
 
-        // 使用 MovePosition 而不是 Translate
+        // Use MovePosition instead of Translate
         rb.MovePosition(rb.position + movement);
     }
 }
