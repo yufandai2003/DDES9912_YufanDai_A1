@@ -1192,7 +1192,7 @@ GameObject:
   - component: {fileID: 442511002}
   - component: {fileID: 442511001}
   m_Layer: 5
-  m_Name: Button (Legacy) (1)
+  m_Name: IN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32145,7 +32145,7 @@ GameObject:
   - component: {fileID: 1006380457}
   - component: {fileID: 1006380456}
   m_Layer: 5
-  m_Name: Button (Legacy) (2)
+  m_Name: STOP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32278,7 +32278,7 @@ GameObject:
   - component: {fileID: 1022525058}
   - component: {fileID: 1022525057}
   m_Layer: 5
-  m_Name: Button (Legacy)
+  m_Name: FR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32519,7 +32519,7 @@ GameObject:
   - component: {fileID: 1168370288}
   - component: {fileID: 1168370287}
   m_Layer: 5
-  m_Name: Button (Legacy) (3)
+  m_Name: RS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32591,8 +32591,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 444777922}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+        m_MethodName: chongzhi
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

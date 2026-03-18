@@ -31,8 +31,11 @@ public class GameManager : MonoBehaviour
                 panel.SetActive(false); // Hide initial panel
             }
         }
+      if (Input.GetKeyDown(KeyCode.Escape))
+      {
+      Application.Quit();
+      }
     }
-
     public void chongzhi() // Restart the experiment
     {
         // Reload current scene to reset
