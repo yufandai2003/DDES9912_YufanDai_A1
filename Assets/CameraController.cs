@@ -22,8 +22,8 @@ public class CameraController : MonoBehaviour
             RaycastHit hit; // Stores raycast detection result
             // Create a ray from main camera to current mouse position
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            // If ray hits an object and the object has tag "mubiao"
-            if (Physics.Raycast(ray, out hit) && hit.transform.CompareTag("mubiao"))
+            // If ray hits an object and the object has tag "Selectable"
+            if (Physics.Raycast(ray, out hit) && hit.transform.CompareTag("Selectable"))
             {
                 target = hit.transform;   // Set the hit object as current target
             }
